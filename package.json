@@ -1,0 +1,29 @@
+{
+  "name": "jest-another-rpg",
+  "version": "1.0.0",
+  "description": "RPG played through command-line prompt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KashCodes/jest-another-RPG.git"
+  },
+  "keywords": [
+    "node.js",
+    "inquirer",
+    "jest",
+    "javascript"
+  ],
+  "author": "Kashay Arbelo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KashCodes/jest-another-RPG/issues"
+  },
+  "homepage": "https://github.com/KashCodes/jest-another-RPG#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3",
+    "jest": "^26.6.3"
+  }
+}
