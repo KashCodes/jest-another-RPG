@@ -1,10 +1,9 @@
-//Tells the page it requires the Player.js constructor functions to run test. 
+//Tells the page it requires the constructor functions to run test. 
 const Player = require('../lib/Player');
+const Potion = require('../lib/Potion.js');
 
 // Pulls from __mocks__ folder instead for this Potion file. In it is a specific potion. 
 jest.mock('../lib/Potion');
-
-        /*console.log(new Potion()); ----- Does not work - should be looking for a new potion object, which should include a name and value per Potion.js*/
 
 //Tests play constructor function to ensure it creates a player object with a name and 4 additional properties. 
 test('creates a player object', () => {
