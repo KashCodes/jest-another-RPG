@@ -101,3 +101,14 @@ test('adds a potion to the inventory', () => {
 
   expect(player.inventory.length).toBeGreaterThan(oldCount);
 });
+
+// ensures that usePotion() removes the correct Potion from the Player inventory.We will use the index of the Potion to keep track of which one has been selected.
+test('uses a potion from inventory', () => {
+  const player = new Player('Dave');
+  player.inventory = [new Potion(), new Potion(), new Potion()];
+  const oldCount = player.inventory.length;
+
+  player.usePotion(1);
+
+  expect(player.inventory.length).toBeLessThan(oldCount);
+});
