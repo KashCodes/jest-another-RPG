@@ -67,16 +67,27 @@ test('checks if player is alive or not', () => {
   expect(player.isAlive()).toBeFalsy();
 });
 
-// test to handle the reduceHealth() method to see if the correct amount of health is being subtracted from the Player health property
+// test to handle the reduceHealth() method to see if the correct amount of health is being subtracted from the Player health property.   
 test("subtracts from player's health", () => {
   const player = new Player('Dave');
   const oldHealth = player.health;
 
+  //First test is to ensure it is reducing it by the number specified.
   player.reduceHealth(5);
 
   expect(player.health).toBe(oldHealth - 5);
 
+  // The second is to ensure the health never goes into the negative.
   player.reduceHealth(99999);
 
   expect(player.health).toBe(0);
+});
+
+//verifies that a player's attack value is within range from the getAttackValue() prototype
+test("gets player's attack value", () => {
+  const player = new Player('Dave');
+  player.strength = 10;
+
+  expect(player.getAttackValue()).toBeGreaterThanOrEqual(5);
+  expect(player.getAttackValue()).toBeLessThanOrEqual(15);
 });
