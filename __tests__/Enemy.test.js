@@ -17,3 +17,51 @@ test('creates an enemy object', () => {
   expect(enemy.agility).toEqual(expect.any(Number));
   expect(enemy.potion).toEqual(expect.any(Object));
 });
+
+
+// return checks for enemy's health
+test("gets enemy's health value", () => {
+  const enemy = new Enemy('goblin', 'sword');
+
+  // The expect.stringContaining() method is an expect method preferred in this case because we might need flexibility to change how the enemy's health will be displayed.
+  expect(enemy.getHealth()).toEqual(expect.stringContaining(enemy.health.toString()));
+});
+
+
+// Test to check if enemy is still alive. As long as it is not 0 it will be considered truthy and alive. 
+test('checks if enemy is alive or not', () => {
+  const enemy = new Enemy('goblin', 'sword');
+
+  expect(enemy.isAlive()).toBeTruthy();
+
+  enemy.health = 0;
+
+  expect(enemy.isAlive()).toBeFalsy();
+});
+
+
+//verifies that a enemy's attack value is within range from the getAttackValue() prototype
+test("gets enemy's attack value", () => {
+  const enemy = new Enemy('goblin', 'sword');
+  enemy.strength = 10;
+
+  expect(enemy.getAttackValue()).toBeGreaterThanOrEqual(5);
+  expect(enemy.getAttackValue()).toBeLessThanOrEqual(15);
+});
+
+
+// test to handle the reduceHealth() method to see if the correct amount of health is being subtracted from the enemy health property.  
+test("subtracts from enemy's health", () => {
+  const enemy = new Enemy('goblin', 'sword');
+  const oldHealth = enemy.health;
+
+  //First test is to ensure it is reducing it by the number specified.
+  enemy.reduceHealth(5);
+
+  expect(enemy.health).toBe(oldHealth - 5);
+
+  // The second is to ensure the health never goes into the negative.
+  enemy.reduceHealth(99999);
+
+  expect(enemy.health).toBe(0);
+});
